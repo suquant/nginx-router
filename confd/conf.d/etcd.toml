@@ -1,0 +1,9 @@
+[template]
+src = "etcd.conf"
+dest = "/etc/nginx/etcd.conf"
+owner = "nginx"
+mode = "0644"
+keys = [
+  "/services/http",
+]
+reload_cmd = "/app/bin/reload"

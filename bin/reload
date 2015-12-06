@@ -1,0 +1,16 @@
+#!/bin/sh
+#
+# This script is designed to be run inside the container
+#
+
+# fail hard and fast even on pipelines
+set -eo pipefail
+
+# set debug based on envvar
+[[ $DEBUG ]] && set -x
+
+NGINX_PIDFILE=${NGINX_PIDFILE:-/var/run/nginx/nginx.pid}
+
+pid=$(cat ${NGINX_PIDFILE})
+
+exec kill -s HUP ${pid}
